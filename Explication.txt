@@ -1,0 +1,8 @@
+LoRaWANNetwork.ned:
+LoRaNode : Représente un nœud LoRa (capteur) dans le réseau.
+LoRaGW : Représente la passerelle LoRa, qui connecte les nœuds au reste du réseau.
+RadioMedium : Gère la transmission des signaux sans fil, y compris la propagation et les interférences.
+LoRaMedium : Gère les caractéristiques spécifiques à la transmission LoRa dans la couche physique.
+LogNormalShadowing : Modèle de propagation utilisé pour simuler la perte de signal dans des environnements réels (urbains, ruraux).
+IdealObstacleLoss : Simule la perte de signal causée par des obstacles dans l'environnement.
+PhysicalEnvironment : Décrit l'environnement physique du réseau (obstacles, bâtiments, terrain).

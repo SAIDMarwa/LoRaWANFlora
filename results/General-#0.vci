@@ -1,0 +1,509 @@
+file 125666 1731491302                                          
+version 3
+run General-0-20241113-10:28:50-172777
+attr configname General
+attr datetime 20241113-10:28:50
+attr datetimef 20241113-102850
+attr experiment General
+attr inifile omnetpp.ini
+attr iterationvars ""
+attr iterationvarsd ""
+attr iterationvarsf ""
+attr measurement ""
+attr network LoRaWANNetwork
+attr processid 172777
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+config image-path ../../../omnet/samples/inet4.4/images
+config network LoRaWANNetwork
+config sim-time-limit 100s
+config **.alohaChannelModel false
+config LoRaWANNetwork.networkSizeX 500000
+config LoRaWANNetwork.networkSizeY 500000
+config **.numNodes 10
+config **.numGateways 1
+config **.constraintAreaMaxX 2376.0m
+config **.constraintAreaMaxY 1090.0m
+config **.gateway[0].**.initialX 544.00m
+config **.gateway[0].**.initialY 544.00m
+config **.nodes[*].**.initFromDisplayString false
+config **.nodes[*].**.evaluateADRinNode true
+config **.nodes[*].**initialLoRaBW "125 kHz"
+config **.nodes[*].**initialLoRaCR 4
+config **.nodes[*].numApps 1
+config **.nodes[*].app[0].typename SimpleLoRaApp
+config **.radio.radioMediumModule "\"LoRaMedium\""
+config **.LoRaMedium.pathLossType "\"LoRaLogNormalShadowing\""
+config **.ipv4Delayer.config "xmldoc(\"/home/marwa/Bureau/omnetpp-6.1/samples/FirstNetwork/Delays.xml\")"
+config *.physicalEnvironment.obstacles "\"obstacles.xml\""
+config **.physicalEnvironment.obstaclesDisplay true
+config output-scalar-file ../results/omnetpp-s0.ini.sca
+config **.nodes[*].**.energySourceModule "\"^.IdealEpEnergyStorage\""
+config *.nodes[*].LoRaNic.energySourceModule "\"EnergyStorage\""
+config *.nodes[*].LoRaNic.capacity 1000J
+config *.nodes[*].LoRaNic.maxGatewayDistance 320.0
+config *.nodes[*].LoRaNic.gatewayX 320.0
+config *.nodes[*].LoRaNic.gatewayY 320.0
+config *.nodes[*].app[*].numApps 1
+config *.nodes[*].app[0].destAddress "\"^.gateway\""
+config *.nodes[*].app[0].sendInterval 10s
+config *.radioMedium.backgroundNoise.power -100dBm
+config *.gateway[*].numUdpApps 1
+config *.gateway.packetForwarder.destPort 8000
+config *.gateway.LoRaGWNic.energySourceModule "\"EnergyStorage\""
+config **.LoRaGWNic.radio.iAmGateway true
+config **.gateway[*].**.initFromDisplayString false
+config **.gateway[0].packetForwarder.localPort 2000
+config **.gateway[0].packetForwarder.destPort 1000
+config **.gateway[0].packetForwarder.destAddresses "\"networkServer\""
+config **.gateway[0].packetForwarder.indexNumber 0
+config *.nodes[0].**.initialX 767m
+config *.nodes[0].**.initialY 583m
+config *.nodes[1].**.initialX 741m
+config *.nodes[1].**.initialY 608m
+config *.nodes[2].**.initialX 890m
+config *.nodes[2].**.initialY 734m
+config *.nodes[3].**.initialX 522m
+config *.nodes[3].**.initialY 284m
+config *.nodes[4].**.initialX 11m
+config *.nodes[4].**.initialY 92m
+config *.nodes[5].**.initialX 296m
+config *.nodes[5].**.initialY 896m
+config *.nodes[6].**.initialX 361m
+config *.nodes[6].**.initialY 927m
+config *.nodes[7].**.initialX 854m
+config *.nodes[7].**.initialY 81m
+config *.nodes[8].**.initialX 745m
+config *.nodes[8].**.initialY 32m
+config *.nodes[9].**.initialX 621m
+config *.nodes[9].**.initialY 610m
+
+vector 7 LoRaWANNetwork.networkServer.eth[0].queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+7	123459 40 0 0 0 0 5 0 0 0 0
+vector 8 LoRaWANNetwork.networkServer.eth[0].queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+8	123499 40 0 0 0 0 5 0 0 0 0
+vector 39 LoRaWANNetwork.networkServer.udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+39	123539 9 0 0 0 0 1 0 0 0 0
+vector 40 LoRaWANNetwork.networkServer.udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+40	123548 9 0 0 0 0 1 0 0 0 0
+vector 41 LoRaWANNetwork.networkServer.udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+41	123557 9 0 0 0 0 1 0 0 0 0
+vector 49 LoRaWANNetwork.gwRouter[0].ppp[0].queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+49	123566 45 0 0 0 0 5 0 0 0 0
+vector 50 LoRaWANNetwork.gwRouter[0].ppp[0].queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+50	123611 45 0 0 0 0 5 0 0 0 0
+vector 60 LoRaWANNetwork.gwRouter[0].ppp[0].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "tx state"
+60	123656 9 0 0 0 0 1 0 0 0 0
+vector 69 LoRaWANNetwork.gwRouter[0].eth[0].queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+69	123665 45 0 0 0 0 5 0 0 0 0
+vector 70 LoRaWANNetwork.gwRouter[0].eth[0].queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+70	123710 45 0 0 0 0 5 0 0 0 0
+vector 106 LoRaWANNetwork.nsRouter.ppp[0].queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+106	123755 50 0 0 0 0 5 0 0 0 0
+vector 107 LoRaWANNetwork.nsRouter.ppp[0].queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+107	123805 50 0 0 0 0 5 0 0 0 0
+vector 117 LoRaWANNetwork.nsRouter.ppp[0].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "tx state"
+117	123855 10 0 0 0 0 1 0 0 0 0
+vector 126 LoRaWANNetwork.nsRouter.eth[0].queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+126	123865 50 0 0 0 0 5 0 0 0 0
+vector 127 LoRaWANNetwork.nsRouter.eth[0].queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+127	123915 50 0 0 0 0 5 0 0 0 0
+vector 156 LoRaWANNetwork.internetCloud.ppp[0].queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+156	123965 50 0 0 0 0 5 0 0 0 0
+vector 157 LoRaWANNetwork.internetCloud.ppp[0].queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+157	124015 50 0 0 0 0 5 0 0 0 0
+vector 167 LoRaWANNetwork.internetCloud.ppp[0].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "tx state"
+167	124065 10 0 0 0 0 1 0 0 0 0
+vector 176 LoRaWANNetwork.internetCloud.ppp[1].queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+176	124075 50 0 0 0 0 5 0 0 0 0
+vector 177 LoRaWANNetwork.internetCloud.ppp[1].queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+177	124125 50 0 0 0 0 5 0 0 0 0
+vector 187 LoRaWANNetwork.internetCloud.ppp[1].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "tx state"
+187	124175 10 0 0 0 0 1 0 0 0 0
+vector 204 LoRaWANNetwork.gateway[0].LoRaGWNic.radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+204	124185 30 0 0 0 0 3 0 4 4 16
+vector 205 LoRaWANNetwork.gateway[0].LoRaGWNic.radio receptionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source receptionStateChanged
+attr title "Radio reception state"
+205	124215 10 0 0 0 0 1 1 1 1 1
+vector 206 LoRaWANNetwork.gateway[0].LoRaGWNic.radio transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source transmissionStateChanged
+attr title "Radio transmission state"
+206	124225 10 0 0 0 0 1 1 1 1 1
+vector 209 LoRaWANNetwork.gateway[0].eth[0].queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+209	124235 50 0 0 0 0 5 0 0 0 0
+vector 210 LoRaWANNetwork.gateway[0].eth[0].queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+210	124285 50 0 0 0 0 5 0 0 0 0
+vector 233 LoRaWANNetwork.gateway[0].udp passedUpPk:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetSentToUpper
+attr title "packets passed up, count"
+233	124335 10 0 0 0 0 1 0 0 0 0
+vector 234 LoRaWANNetwork.gateway[0].udp droppedPkWrongPort:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsNoPortFound(packetDropped)
+attr title "packets dropped (wrong port), count"
+234	124345 10 0 0 0 0 1 0 0 0 0
+vector 235 LoRaWANNetwork.gateway[0].udp droppedPkBadChecksum:vector(count) ETV
+attr interpolationmode none
+attr recordingmode vector(count)
+attr source packetDropReasonIsIncorrectlyReceived(packetDropped)
+attr title "packets dropped (checksum error), count"
+235	124355 10 0 0 0 0 1 0 0 0 0
+vector 247 LoRaWANNetwork.nodes[0].LoRaNic.queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+247	124365 50 0 0 0 0 5 0 0 0 0
+vector 248 LoRaWANNetwork.nodes[0].LoRaNic.queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+248	124415 50 0 0 0 0 5 0 0 0 0
+vector 265 LoRaWANNetwork.nodes[0].LoRaNic.radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+265	124465 30 0 0 0 0 3 0 1 1 1
+vector 270 LoRaWANNetwork.nodes[1].LoRaNic.queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+270	124495 50 0 0 0 0 5 0 0 0 0
+vector 271 LoRaWANNetwork.nodes[1].LoRaNic.queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+271	124545 50 0 0 0 0 5 0 0 0 0
+vector 288 LoRaWANNetwork.nodes[1].LoRaNic.radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+288	124595 30 0 0 0 0 3 0 1 1 1
+vector 293 LoRaWANNetwork.nodes[2].LoRaNic.queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+293	124625 50 0 0 0 0 5 0 0 0 0
+vector 294 LoRaWANNetwork.nodes[2].LoRaNic.queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+294	124675 50 0 0 0 0 5 0 0 0 0
+vector 311 LoRaWANNetwork.nodes[2].LoRaNic.radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+311	124725 30 0 0 0 0 3 0 1 1 1
+vector 316 LoRaWANNetwork.nodes[3].LoRaNic.queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+316	124755 50 0 0 0 0 5 0 0 0 0
+vector 317 LoRaWANNetwork.nodes[3].LoRaNic.queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+317	124805 50 0 0 0 0 5 0 0 0 0
+vector 334 LoRaWANNetwork.nodes[3].LoRaNic.radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+334	124855 30 0 0 0 0 3 0 1 1 1
+vector 339 LoRaWANNetwork.nodes[4].LoRaNic.queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+339	124885 50 0 0 0 0 5 0 0 0 0
+vector 340 LoRaWANNetwork.nodes[4].LoRaNic.queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+340	124935 50 0 0 0 0 5 0 0 0 0
+vector 357 LoRaWANNetwork.nodes[4].LoRaNic.radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+357	124985 30 0 0 0 0 3 0 1 1 1
+vector 362 LoRaWANNetwork.nodes[5].LoRaNic.queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+362	125015 50 0 0 0 0 5 0 0 0 0
+vector 363 LoRaWANNetwork.nodes[5].LoRaNic.queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+363	125065 50 0 0 0 0 5 0 0 0 0
+vector 380 LoRaWANNetwork.nodes[5].LoRaNic.radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+380	125115 30 0 0 0 0 3 0 1 1 1
+vector 385 LoRaWANNetwork.nodes[6].LoRaNic.queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+385	125145 50 0 0 0 0 5 0 0 0 0
+vector 386 LoRaWANNetwork.nodes[6].LoRaNic.queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+386	125195 50 0 0 0 0 5 0 0 0 0
+vector 403 LoRaWANNetwork.nodes[6].LoRaNic.radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+403	125245 30 0 0 0 0 3 0 1 1 1
+vector 408 LoRaWANNetwork.nodes[7].LoRaNic.queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+408	125275 50 0 0 0 0 5 0 0 0 0
+vector 409 LoRaWANNetwork.nodes[7].LoRaNic.queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+409	125325 50 0 0 0 0 5 0 0 0 0
+vector 426 LoRaWANNetwork.nodes[7].LoRaNic.radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+426	125375 30 0 0 0 0 3 0 1 1 1
+vector 431 LoRaWANNetwork.nodes[8].LoRaNic.queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+431	125405 50 0 0 0 0 5 0 0 0 0
+vector 432 LoRaWANNetwork.nodes[8].LoRaNic.queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+432	125455 50 0 0 0 0 5 0 0 0 0
+vector 449 LoRaWANNetwork.nodes[8].LoRaNic.radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+449	125505 30 0 0 0 0 3 0 1 1 1
+vector 454 LoRaWANNetwork.nodes[9].LoRaNic.queue queueLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + count(packetPushStarted) - count(packetPulled) - count(packetRemoved) - count(packetDropped)))"
+attr title "queue length"
+attr unit pk
+454	125535 50 0 0 0 0 5 0 0 0 0
+vector 455 LoRaWANNetwork.nodes[9].LoRaNic.queue queueBitLength:vector ETV
+attr autoWarmupFilter false
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source "warmup(atomic(constant0(packetPushEnded) + sum(packetLength(packetPushStarted)) - sum(packetLength(packetPulled)) - sum(packetLength(packetRemoved)) - sum(packetLength(packetDropped))))"
+attr title "queue bit length"
+attr unit b
+455	125585 50 0 0 0 0 5 0 0 0 0
+vector 472 LoRaWANNetwork.nodes[9].LoRaNic.radio radioMode:vector ETV
+attr interpolationmode sample-hold
+attr recordingmode vector
+attr source radioModeChanged
+attr title "Radio mode"
+472	125635 31 0 0 0 0 3 0 1 1 1

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<obstacles>
+    <obstacle type="tree" x="50.0" y="30.0" z="5.0"/>
+    <obstacle type="rock" x="120.0" y="80.0" z="3.0"/>
+    <obstacle type="building" x="200.0" y="150.0" z="15.0"/>
+</obstacles>
